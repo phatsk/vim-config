@@ -143,6 +143,7 @@ cmap W!! w !sudo tee % >/dev/null
 
 " I like to :quit with 'q', shrug.
 nnoremap <silent> q :<C-u>:quit<CR>
+nnoremap <Leader>q :q!<CR>
 nnoremap gQ <Nop>
 
 " Macros
