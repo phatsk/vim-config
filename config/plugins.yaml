@@ -148,6 +148,7 @@
 - { repo: reedes/vim-wordy, on_cmd: [ Wordy, NextWordy, PrevWordy ]}
 - { repo: brooth/far.vim, on_cmd: [ Far, Farp, F ] }
 - { repo: jreybert/vimagit, on_cmd: Magit }
+- repo: sbdchd/neoformat
 
 - repo: easymotion/vim-easymotion
   on_map: { n: <Plug> }
