@@ -143,11 +143,7 @@ cmap W!! w !sudo tee % >/dev/null
 
 " I like to :quit with 'q', shrug.
 nnoremap <silent> q :<C-u>:quit<CR>
-nnoremap gQ <Nop>
-
-" Macros
-nnoremap Q q
-nnoremap M @q
+autocmd MyAutoCmd FileType man nnoremap <silent><buffer> q :<C-u>:quit<CR>
 
 " Macros
 nnoremap Q q
@@ -260,8 +256,7 @@ vnoremap mj :m'>+<CR>gv=gv
 noremap  mk :m-2<CR>
 noremap  mj :m+<CR>
 
-" Last session management shortcuts
-" nmap <Leader>se :<C-u>SessionSave last<CR>
+" Session management shortcuts
 nmap <silent> <Leader>se :<C-u>execute 'SessionSave' fnamemodify(resolve(getcwd()), ':p:gs?/?_?')<CR>
 nmap <silent> <Leader>os :<C-u>execute 'source '.g:session_directory.'/'.fnamemodify(resolve(getcwd()), ':p:gs?/?_?').'.vim'<CR>
 
@@ -332,20 +327,55 @@ function! WipeHiddenBuffers()
 	endfor
 endfunction
 
-function! s:BufferEmpty() " {{{
+function! s:BufferEmpty()
 	let l:current = bufnr('%')
 	if ! getbufvar(l:current, '&modified')
 		enew
 		silent! execute 'bdelete '.l:current
 	endif
-endfunction " }}}
+endfunction
 
-function! s:SweepBuffers() " {{{
+function! s:SweepBuffers()
 	let bufs = range(1, bufnr('$'))
 	let hidden = filter(bufs, 'buflisted(v:val) && !bufloaded(v:val)')
 	if ! empty(hidden)
 		execute 'silent bdelete' join(hidden)
 	endif
-endfunction " }}}
-" }}}
+endfunction
 
+" OpenChangedFiles COMMAND
+" Open a split for each dirty file in git
+function! OpenChangedFiles()
+	only " Close all windows, unless they're modified
+	let status =
+		\ system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
+	let filenames = split(status, "\n")
+	exec 'edit ' . filenames[0]
+	for filename in filenames[1:]
+		exec 'sp ' . filename
+	endfor
+endfunction
+
+
+function! s:SweepBuffers()
+	let bufs = range(1, bufnr('$'))
+	let hidden = filter(bufs, 'buflisted(v:val) && !bufloaded(v:val)')
+	if ! empty(hidden)
+		execute 'silent bdelete' join(hidden)
+	endif
+endfunction
+
+" OpenChangedFiles COMMAND
+" Open a split for each dirty file in git
+function! OpenChangedFiles()
+	only " Close all windows, unless they're modified
+	let status =
+		\ system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
+	let filenames = split(status, "\n")
+	exec 'edit ' . filenames[0]
+	for filename in filenames[1:]
+		exec 'sp ' . filename
+	endfor
+endfunction
+
+" vim: set ts=2 sw=2 tw=80 noet :
