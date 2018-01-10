@@ -379,3 +379,6 @@ function! OpenChangedFiles()
 endfunction
 
 " vim: set ts=2 sw=2 tw=80 noet :
+
+" execute current line
+nnoremap <C-x><c-e> :.w !bash<cr>
