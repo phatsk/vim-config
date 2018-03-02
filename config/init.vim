@@ -1,6 +1,9 @@
 
 " Vim Initialization
 " ------------------
+"  set correct python versions:
+let g:python_host_prog = '/usr/bin/python2'  " here if python --version show 3.0+ you should use let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " Global Mappings "{{{
 " Use spacebar as leader and ; as secondary-leader
