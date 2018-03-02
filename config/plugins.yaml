@@ -4,7 +4,6 @@
 
 # Startup
 # -------
-- repo: vim-syntastic/syntastic
 - repo: Shougo/dein.vim
 - repo: rafi/awesome-vim-colorschemes
 - repo: sjl/badwolf
