@@ -224,7 +224,6 @@
       \|   endif
       \| endif
 
-- repo: kien/ctrlp.vim
 - repo: MattesGroeger/vim-bookmarks
   on_path: .*
   hook_source: |
@@ -312,18 +311,15 @@
   hook_source: source $VIMPATH/config/plugins/neocomplete.vim
 
 - repo: Shougo/neosnippet.vim
-  depends: [ vim-snippets, context_filetype.vim ]
+  depends: [ neosnippet-snippets, context_filetype.vim ]
   if: empty($VIM_MINIMAL)
   on_event: InsertCharPre
   on_ft: snippet
-  hook_add: |
-    let g:neosnippet#data_directory = $VARPATH.'/snippets'
-    let g:neosnippet#snippets_directory=$VARPATH.'/dein/repos/github.com/honza/vim-snippets/snippets'
+  hook_add: let g:neosnippet#data_directory = $VARPATH.'/snippets'
   hook_source: |
     let g:neosnippet#enable_snipmate_compatibility = 1
     let g:neosnippet#enable_completed_snippet = 1
     let g:neosnippet#expand_word_boundary = 1
-    let g:neosnippet#disable_runtime_snippets = {  '_' : 1,  }
     autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
 
 - repo: ludovicchabant/vim-gutentags
@@ -361,11 +357,7 @@
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_excluded_ft = 'html'
 
-# - { repo: Shougo/neosnippet-snippets, if: empty($VIM_MINIMAL) }
-- repo: honza/vim-snippets
-  # hook_source: |
-  #   ActivateAddons vim-snippets snipmate
-
+- { repo: Shougo/neosnippet-snippets, if: empty($VIM_MINIMAL) }
 - { repo: Shougo/context_filetype.vim, lazy: 1, if: empty($VIM_MINIMAL) }
 - { repo: Shougo/neco-vim, on_ft: vim, if: empty($VIM_MINIMAL) }
 - { repo: Shougo/neco-syntax, on_source: [ neocomplete.vim, deoplete.nvim ]}
@@ -392,7 +384,7 @@
   hook_add: |
     let g:pymode = 1
     let g:pymode_python = 'python3'
-    let g:pymode_run = 1
+    let g:pymode_run = 0
     let g:pymode_lint = 1 
     let g:pymode_lint_on_write = 0
     let g:pymode_lint_checkers = []
@@ -484,7 +476,6 @@
 # Text objects
 # ------------
 - { repo: kana/vim-textobj-user, on_func: textobj#user# }
-- { repo: bkad/CamelCaseMotion, on_map: { nox: <Plug>CamelCaseMotion }}
 - { repo: terryma/vim-expand-region, on_map: { x: <Plug> }}
 - { repo: AndrewRadev/sideways.vim, on_map: { ox: <Plug>Sideways }}
 - { repo: AndrewRadev/splitjoin.vim, on_map: { n: <Plug>Splitjoin }}
