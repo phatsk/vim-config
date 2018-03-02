@@ -6,6 +6,10 @@
 # -------
 - repo: Shougo/dein.vim
 - repo: rafi/awesome-vim-colorschemes
+- repo: sjl/badwolf
+- repo: romainl/Apprentice
+- repo: jonathanfilip/vim-lucius
+- repo: morhetz/gruvbox
 - repo: rafi/vim-badge
 - repo: thinca/vim-localrc
 - repo: christoomey/vim-tmux-navigator
@@ -98,6 +102,7 @@
 
 - { repo: vim-python/python-syntax, on_ft: python }
 - { repo: Vimjas/vim-python-pep8-indent, on_ft: python }
+- { repo: nathanaelkane/vim-indent-guides, on_ft: python }
 - { repo: vim-scripts/python_match.vim, on_ft: python }
 - { repo: tmhedberg/SimpylFold, on_ft: python }
 - { repo: raimon49/requirements.txt.vim, on_ft: requirements }
@@ -369,6 +374,26 @@
     let g:jedi#quickfix_window_height = 10
     let g:jedi#use_splits_not_buffers = 'right'
 
+- repo: python-mode/python-mode
+  if: empty($VIM_MINIMAL)
+  on_ft: python
+  hook_add: |
+    let g:pymode = 1
+    let g:pymode_python = 'python3'
+    let g:pymode_run = 0
+    let g:pymode_lint = 1 
+    let g:pymode_lint_on_write = 0
+    let g:pymode_lint_checkers = []
+    let g:pymode_lint_cwindow = 0
+    let g:pymode_doc = 0
+    let g:pymode_rope = 0
+    let g:pymode_rope_completion = 0
+    let g:pymode_rope_lookup_project = 0
+    let g:pymode_syntax = 0
+    nnoremap <F5> :w<CR>:!clear<CR>:!python %<CR>
+    nnoremap <Leader>e :Dispatch !python3 %
+    nnoremap <Leader>pl :PymodeLintAuto<CR>
+  
 # Only NeoVim ------------------------------
 - repo: zchee/deoplete-go
   if: has('nvim') && ! empty($GOPATH) && empty($VIM_MINIMAL)
