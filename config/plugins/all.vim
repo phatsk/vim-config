@@ -112,10 +112,10 @@ if dein#tap('vim-niceblock')
 	xmap A  <Plug>(niceblock-A)
 endif
 
-if dein#tap('accelerated-jk')
-	nmap <silent>j <Plug>(accelerated_jk_gj)
-	nmap <silent>k <Plug>(accelerated_jk_gk)
-endif
+" if dein#tap('accelerated-jk')
+" 	nmap <silent>j <Plug>(accelerated_jk_gj)
+" 	nmap <silent>k <Plug>(accelerated_jk_gk)
+" endif
 
 if dein#tap('vim-edgemotion')
 	map gj <Plug>(edgemotion-j)
