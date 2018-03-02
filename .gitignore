@@ -1,6 +1,5 @@
 /benchmarks/
 /spell
-/.vault.vim
 /.local.vimrc
 /config/local.vim
 /config/local.plugins.yaml
