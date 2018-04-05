@@ -132,10 +132,10 @@ augroup END "}}}
 " ---------------------------------------------------------
 " highlight! Error  term=NONE cterm=NONE
 " highlight! link WarningMsg  Comment
-highlight! link pythonSpaceError  NONE
+" highlight! link pythonSpaceError  NONE
 highlight! link pythonIndentError NONE
 " highlight! link mkdLineBreak      NONE
-highlight! link ExtraWhitespace  SpellBad
+" highlight! link ExtraWhitespace  SpellBad
 highlight! WarningMsg ctermfg=100 guifg=#CCC566
 " }}}
 
