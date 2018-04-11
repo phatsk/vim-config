@@ -65,7 +65,7 @@ cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 cnoreabbrev Qa qa
 cnoreabbrev Bd bd
-cnoreabbrev bD bd
+cnoreabbrev bD bd 
 
 " Start new line from any cursor position
 inoremap <S-Return> <C-o>o
@@ -114,10 +114,11 @@ cnoremap <C-b> <Left>
 cnoremap <C-d> <C-w>
 
 " Switch history search pairs, matching my bash shell
-cnoremap <C-p>  <Up>
-cnoremap <C-n>  <Down>
-cnoremap <Up>   <C-p>
-cnoremap <Down> <C-n>
+" User: commented out to restore old Up/Down functionality in history
+" cnoremap <C-p>  <Up>
+" cnoremap <C-n>  <Down>
+" cnoremap <Up>   <C-p>
+" cnoremap <Down> <C-n>
 
 " }}}
 " File operations {{{
@@ -161,6 +162,7 @@ nmap <silent> <Leader>tn :setlocal nonumber!<CR>
 nmap <silent> <Leader>tl :setlocal nolist!<CR>
 nmap <silent> <Leader>th :nohlsearch<CR>
 nmap <silent> <Leader>tw :setlocal wrap! breakindent!<CR>
+nmap <silent> <Leader>/ :nohlsearch<CR>
 
 " Tabs
 nnoremap <silent> g0 :<C-u>tabfirst<CR>
@@ -249,6 +251,12 @@ nnoremap <Leader>S ^vg_y:execute @@<CR>:echo 'Sourced line.'<CR>
 
 " Yank buffer's absolute path to X11 clipboard
 nnoremap <Leader>y :let @+=expand("%:p")<CR>:echo 'Copied to clipboard.'<CR>
+
+" Fuzzy find
+nnoremap <Leader>F :FuzzyOpen<CR>
+
+" PHP Debugging
+nnoremap <leader>D V:s/\v^(\s+)?(.*)$/\1echo '<pre>', print_r(\2, true); die;/<CR>:nohls<CR>:w<CR>
 
 " Drag current line/s vertically and auto-indent
 vnoremap mk :m-2<CR>gv=gv

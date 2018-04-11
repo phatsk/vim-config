@@ -168,6 +168,18 @@ set laststatus=2        " Always show a status line
 set colorcolumn=80      " Highlight the 80th character limit
 set display=lastline
 
+"set autochdir
+"let base16colorspace=256  " Access colors present in 256 colorspace
+
+"function! s:base16_customize() abort
+"  call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
+"endfunction
+
+"augroup on_change_colorschema
+  "autocmd!
+  "autocmd ColorScheme * call s:base16_customize()
+"augroup END
+
 " Do not display completion messages
 " Patch: https://groups.google.com/forum/#!topic/vim_dev/WeBBjkXE8H8
 if has('patch-7.4.314')
@@ -233,5 +245,7 @@ function! FoldText()
 endfunction
 
 " }}}
+
+"set autochdir
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :
