@@ -19,8 +19,28 @@
     autocmd MyAutoCmd InsertEnter * let b:cursorword=0
     autocmd MyAutoCmd InsertLeave * let b:cursorword=1
 
+# User Startup
+# -------
+- repo: terryma/vim-multiple-cursors
+- repo: junegunn/vim-easy-align
+  hook_add: |
+    nmap ga <Plug>(EasyAlign)
+    xmap ga <Plug>(EasyAlign)
+
+- repo: vim-scripts/ScrollColors
+
 # Lazy Loading
 # ==========================================
+
+# User Languages
+# ---------
+- repo: alvan/vim-closetag
+  on_ft: [ html, php, js ]
+
+- repo: chrisbra/Colorizer
+  on_ft: [ css, php, js, html ]
+  hook_add: |
+    let g:colorizer_auto_filetype='css,html,php,js'
 
 # Languages
 # ---------
