@@ -32,6 +32,7 @@
     xmap ga <Plug>(EasyAlign)
 
 - repo: vim-scripts/ScrollColors
+- repo: tpope/vim-abolish
 
 # Lazy Loading
 # ==========================================
@@ -39,12 +40,24 @@
 # User Languages
 # ---------
 - repo: alvan/vim-closetag
-  on_ft: [ html, php, js ]
+  on_ft: [ html, php, js, javascript ]
+  hook_add: |
+    let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js'
 
 - repo: chrisbra/Colorizer
-  on_ft: [ css, php, js, html ]
+  on_ft: [ css, php, js, html, stylus, javascript ]
   hook_add: |
-    let g:colorizer_auto_filetype='css,html,php,js'
+    let g:colorizer_auto_filetype='css,html,php,js,stylus,styl'
+
+- repo: prettier/vim-prettier
+  on_ft: [ js, sass, css, less, javascript ]
+  hook_add: |
+    let g:prettier#quickfix_enabled = 0
+    let g:prettier#autoformat = 0
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+- repo: wavded/vim-stylus
+  on_ft: stylus
 
 # Languages
 # ---------
@@ -99,7 +112,11 @@
     highlight! link jsFutureKeys PreProc
 
 - { repo: othree/jspc.vim, on_ft: [ javascript, jsx, javascript.jsx ] }
-- { repo: MaxMEllon/vim-jsx-pretty, on_ft: [ javascript, jsx, javascript.jsx ]}
+- repo: MaxMEllon/vim-jsx-pretty
+  on_ft: [ javascript, jsx, javascript.jsx ]
+  hook_add: |
+    let g:vim_jsx_pretty_colorful_config=1
+
 - { repo: heavenshell/vim-jsdoc, on_ft: [ javascript, jsx, javascript.jsx ] }
 - { repo: moll/vim-node, on_ft: [ javascript, jsx, javascript.jsx ] }
 - { repo: elzr/vim-json, on_ft: json }
@@ -317,7 +334,8 @@
   depends: context_filetype.vim
   if: has('nvim') && empty($VIM_MINIMAL)
   on_i: 1
-  hook_add: let g:deoplete#enable_at_startup = 1
+  hook_add: |
+    let g:deoplete#enable_at_startup = 1
   hook_source: source $VIMPATH/config/plugins/deoplete.vim
 
 - repo: Shougo/neocomplete
@@ -360,7 +378,7 @@
   on_i: 1
   on_ft: [ html, css, jsx, javascript, javascript.jsx ]
   hook_source: |
-    let g:use_emmet_complete_tag = 0
+    let g:use_emmet_complete_tag = 1
     let g:user_emmet_install_global = 0
     let g:user_emmet_install_command = 0
     let g:user_emmet_mode = 'i'
@@ -375,6 +393,8 @@
   hook_source: |
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_excluded_ft = 'html'
+  hook_add: |
+    let g:delimitMate_matchpairs = "(:),[:],{:}"
 
 - { repo: Shougo/neosnippet-snippets, if: empty($VIM_MINIMAL) }
 - { repo: Shougo/context_filetype.vim, lazy: 1, if: empty($VIM_MINIMAL) }
