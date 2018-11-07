@@ -8,9 +8,9 @@ endif
 
 augroup filetypedetect
 
-	autocmd BufNewFile,BufRead */inventory/*.{yml,yaml}    setfiletype ansible
-	autocmd BufNewFile,BufRead */inventories/*.{yml,yaml}  setfiletype ansible
-	autocmd BufNewFile,BufRead */playbooks/*.{yml,yaml}    setfiletype ansible
+	autocmd BufNewFile,BufRead */inventory/*.{yml,yaml}    setfiletype yaml.ansible
+	autocmd BufNewFile,BufRead */inventories/*.{yml,yaml}  setfiletype yaml.ansible
+	autocmd BufNewFile,BufRead */playbooks/*.{yml,yaml}    setfiletype yaml.ansible
 
 	autocmd BufNewFile,BufRead .tern-project setfiletype json
 	autocmd BufNewFile,BufRead .jsbeautifyrc setfiletype json
@@ -20,6 +20,8 @@ augroup filetypedetect
 	autocmd BufNewFile,BufReadPost *.{feature,story} setfiletype cucumber
 	autocmd BufNewFile,BufRead Jenkinsfile           setfiletype groovy
 	autocmd BufNewFile,BufRead Tmuxfile,tmux/config  setfiletype tmux
+
+	"autocmd BufNewFile,BufReadPost *.mmd setfiletype markdown
 
 augroup END
 
